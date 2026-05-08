@@ -1,0 +1,238 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+	height: auto;
+}
+#wraped {
+	width: 800px;
+	background-color: #FFF;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: outset;
+	border-right-color: #999;
+	border-bottom-color: #999;
+	border-left-color: #999;
+	margin: auto;
+	height: auto;
+	border-top-color: #999;
+}
+#main #infoPaginas {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	background-color: #E5E5E5;
+	font-family: Verdana, Geneva, sans-serif;
+	padding: 1px;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	margin-left: 4px;
+}
+#contenedor #main {
+	height: auto;
+	overflow: hidden;
+}
+
+
+#wraped #contenedor {
+	background-color: #FFF;
+	height: auto;
+	overflow: hidden;
+}
+
+
+#logo {
+	height: 130px;
+}
+#wraped #contenedor #menu {
+	width: 150px;
+	background-color: #FFF;
+	height: auto;
+	float: left;
+
+}
+#footer {
+	height: 20px;
+	margin: 0px;
+	padding: 0px;
+}
+#main #resultados {
+	margin: 15;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	height: auto;
+	overflow: auto;
+}
+#contenedor #menuv2 {
+	overflow: auto;
+}
+
+
+.concepto {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 8px;
+	border-left-width: thick;
+	border-left-style: none;
+	border-top-color: #666;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	border-left-color: #666;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	padding-bottom: 2px;
+	padding-right: 8px;
+	padding-left: 2px;
+	margin-right: 8px;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.definicion {
+	font-size: 14px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin-left: 12px;
+	font-weight: normal;
+	font-style: normal;
+	margin-right: 14px;
+	text-align: justify;
+}
+.imagendeTermino {
+	text-align: right;
+}
+
+#main #barrabuscar {
+	text-align: left;
+	margin: 5px;
+	padding: 0px;
+	line-height: 25px;
+}
+#main #numPaginas {
+	font-size: 12px;
+	line-height: 30px;
+	margin: 5px;
+	background-color: #FFF;
+	text-align: center;
+	padding: 7px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+
+
+
+
+
+body {
+	background-color: #FFF;
+	background-image: url(../imagenes/fondo1.png);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+#main #alfabeto {
+	text-align: center;
+	letter-spacing: 3px;
+	padding-top: 9px;
+}
+
+#alfabeto a {
+	letter-spacing: 3px;
+}
+#main #infoLabel {
+	text-align: left;
+	border-bottom-width: 2px;
+	border-bottom-style: inset;
+	border-bottom-color: #C2922A;
+	margin-right: 6px;
+	margin-left: 4px;
+}
+
+#alfabeto a:hover {
+	font-weight: bold;
+}
+
+#alfabeto a:visited {
+	color: #00F;
+}
+#menu #menuG {
+	text-align: left;
+	line-height: 30px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	padding: 5px;
+	color: #FFF;
+}
+#wraped #contenedor #menu #menuG p {
+	background-color: #C2922A;
+	border: 1px solid #CCC;
+}
+
+#wraped #contenedor #menu #menuG a:visited {
+	color: #FFF;
+	text-decoration: none;
+	margin-left: 6px;
+}
+#wraped #contenedor #menu #menuG a:hover {
+	color: #FFF;
+	text-decoration: none;
+	background-color: #2D2558;
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #2D2558;
+	border-right-color: #2D2558;
+	border-bottom-color: #2D2558;
+	border-left-color: #2D2558;
+}
+#menu #menuG a {
+	margin-left: 6px;
+}
+
+#wraped #contenedor #menu #menuG a:link {
+	color: #FFF;
+	text-decoration: none;
+	margin-left: 6px;
+}
+.tipoTer {
+	font-size: 12px;
+	font-style: italic;
+	text-align: right;
+}
+#main #busquedaTerminos {
+	line-height: 30px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: normal;
+	margin-left: 9px;
+	font-size: 14px;
+	margin-right: 9px;
+	padding-left: 2px;
+}
+#wraped #contenedor #main #busquedaTerminos div p {
+	color: #FFF;
+}
+#wraped #contenedor #main #busquedaTerminos div p {
+	color: #000;
+}
+#wraped #contenedor #main #busquedaTerminos div p {
+	color: #FFF;
+}
+#wraped #contenedor #main #busquedaTerminos div p {
+	color: #000;
+}
+#contenedor #main #busquedaTerminos div p {
+	color: #FFF;
+}
+#contenedor #main #busquedaTerminos div p {
+	color: #FFF;
+}
+#wraped #contenedor #main #busquedaTerminos div p {
+	color: #FFF;
+}
+#wraped #contenedor #main #busquedaTerminos div p {
+	color: #000;
+}
+.esp {
+	color: #FFF;
+}

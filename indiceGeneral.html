@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:spry="http://ns.adobe.com/spry">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Glosario Digital de Términos Jurídicos y Psicológicos</title>
+<link href="css/glosario1.0.css" rel="stylesheet" type="text/css"/>
+</style>
+<script language="JavaScript" type="text/javascript" src="includes/xpath.js"></script>
+<script language="JavaScript" type="text/javascript" src="includes/SpryData.js"></script>
+<script language="JavaScript" type="text/javascript" src="includes/SpryPagedView.js"></script>
+<script language="JavaScript" type="text/javascript" src="includes/SimpleAutoSuggest.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+var dsTerminos = new Spry.Data.XMLDataSet("datos/glosarioJP.xml", "/glosario/terminos/termino");
+
+dsTerminos.setColumnType("definicion","html");
+dsTerminos.setColumnType("tipo","html");
+
+var pvTerminos = new Spry.Data.PagedView(dsTerminos, { pageSize: 10 });
+var pvTerminosPagedInfo = pvTerminos.getPagingInfo();
+
+
+function FilterData(letra)
+{
+	miletra = letra;
+	var regExpStr = letra;
+	regExpStr = "^" + regExpStr;
+
+	var regExp = new RegExp(regExpStr, "i");
+	
+	var filterFunc = function(ds, row, rowNumber)
+	{
+		var str = row["concepto"];
+		if (str && str.search(regExp) != -1)
+			return row;
+		return null;
+	};
+	dsTerminos.filter(filterFunc);
+	
+}
+-->
+</script>
+</head>
+<body onload="FilterData('A')">
+<div id="wraped">
+  <div id="logo"> <img src="imagenes/bannerGlosario.jpg" width="800" height="130" /></div>
+  <div id="contenedor">
+    <div id="menu">
+      <div id="menuG">
+      <p><a href="indiceGeneral.html">Indice Glosario</a></p>
+      <p><a href="indicejuridico.html">Indice Jurídico</a></p>
+      <p><a href="indicepsicologico.html">Indice Psicológico</a></p>
+      <p><a href="buscarTerminos.html">Buscar Términos</a></p>
+      <p><a href="indiceReferencias.html">Indice Referencias</a></p>
+      </div>
+      <p>&nbsp; </p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+    </div>
+    <div id="main">
+    <div id="infoLabel"><img src="imagenes/labelGloVirt.png" width="353" height="41" /></div>
+    <!-- BEGIN Data loading and filtering controls. -->
+    <div id="alfabeto">
+          <p><a  onclick="FilterData('A');" href="#">A</a> 
+            <a onclick="FilterData('B');" href="#">B</a> 
+            <a onclick="FilterData('C');" href="#">C</a> 
+            <a onclick="FilterData('D');" href="#">D</a> 
+            <a onclick="FilterData('E');" href="#">E</a> 
+            <a onclick="FilterData('F');" href="#">F</a> 
+            <a onclick="FilterData('G');" href="#">G</a> 
+            <a onclick="FilterData('H');" href="#">H</a> 
+            <a onclick="FilterData('I');" href="#">I</a> 
+            <a onclick="FilterData('J');" href="#">J</a> 
+            <a onclick="FilterData('K');" href="#">K</a> 
+            <a onclick="FilterData('L');" href="#">L</a> 
+            <a onclick="FilterData('M');" href="#">M</a> 
+            <a onclick="FilterData('N');" href="#">N</a> 
+            <a onclick="FilterData('Ñ');" href="#">Ñ</a> 
+            <a onclick="FilterData('O');" href="#">O</a> 
+            <a onclick="FilterData('P');" href="#">P</a> 
+            <a onclick="FilterData('Q');" href="#">Q</a> 
+            <a onclick="FilterData('R');" href="#">R</a> 
+            <a onclick="FilterData('S');" href="#">S</a> 
+            <a onclick="FilterData('T');" href="#">T</a> 
+            <a onclick="FilterData('U');" href="#">U</a> 
+            <a onclick="FilterData('V');" href="#">V</a> 
+            <a onclick="FilterData('W');" href="#">W</a> 
+            <a onclick="FilterData('X');" href="#">X</a> 
+            <a onclick="FilterData('Y');" href="#">Y</a> 
+            <a onclick="FilterData('Z');" href="#">Z</a></p>
+    </div>
+    <!-- END Data loading and filtering controls. -->
+<p>&nbsp;</p>
+
+ <div id="infoPaginas" spry:region="pvTerminos">
+   <p spry:if="{ds_UnfilteredRowCount} &gt; 0">Página {ds_PageNumber} de {ds_PageCount} - Resultados {ds_PageFirstItemNumber} al {ds_PageLastItemNumber} de {ds_UnfilteredRowCount}.</p>
+	<p spry:if="{ds_UnfilteredRowCount} == 0">No existen términos que empiezen con esa letra!</p>
+</div>
+<!-- END PagedView Info Section -->
+<div id="numPaginas" spry:region="pvTerminosPagedInfo">
+<p spry:if="{ds_UnfilteredRowCount} &gt; 0">Páginas:
+<span   spry:repeatchildren="pvTerminosPagedInfo">
+	<a spry:if="{ds_CurrentRowNumber} != {ds_RowNumber}" href="#" onclick="pvTerminos.goToPage('{ds_PageNumber}'); return false;">{ds_PageNumber}</a>
+	<span spry:if="{ds_CurrentRowNumber} == {ds_RowNumber}" class="currentPage">{ds_PageNumber}</span>
+</span></p>
+<p spry:if="{ds_UnfilteredRowCount} &gt; 0"> <img src="imagenes/terminoJuridico.png" width="20" height="18" /> = Término Jurídico  <img src="imagenes/terminoPsicologico.png" width="20" height="18" /> = Término Psicológico</p>
+</div>
+<!-- BEGIN Paged Display Section -->
+<div id="resultados" spry:region="pvTerminos dsTerminos">
+	<ul spry:repeatchildren="pvTerminos" spry:choose="choose">
+		<li spry:when="{ds_RowID} == {dsTerminos::ds_CurrentRowID}" spry:setrow="pvTerminos">
+        	<h1 class="concepto">{pvTerminos::tipo}  {pvTerminos::concepto}</h1>
+			<h2 class="definicion">{pvTerminos::definicion}</h2>
+            <p>&nbsp;</p>
+        </li>
+		<li spry:default="default"  spry:setrow="pvTerminos">				
+        	<h1 class="concepto">{pvTerminos::tipo}  {pvTerminos::concepto}</h1>
+			<h2 class="definicion">{pvTerminos::definicion}</h2>
+            <p>&nbsp;</p>
+        </li>
+	</ul>
+</div>
+<!-- END Paged Display Section -->
+<div id="numPaginas" spry:region="pvTerminosPagedInfo">
+<p spry:if="{ds_UnfilteredRowCount} &gt; 0">Páginas:
+<span   spry:repeatchildren="pvTerminosPagedInfo">
+	<a spry:if="{ds_CurrentRowNumber} != {ds_RowNumber}" href="#" onclick="pvTerminos.goToPage('{ds_PageNumber}'); return false;">{ds_PageNumber}</a>
+	<span spry:if="{ds_CurrentRowNumber} == {ds_RowNumber}" class="currentPage">{ds_PageNumber}</span>
+</span></p>
+</div>
+    </div>
+  </div>
+<div id="footer"><img src="imagenes/bannerGLosLow.png" width="800" height="20" /></div></div>
+</body>
+</html>

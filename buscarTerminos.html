@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:spry="http://ns.adobe.com/spry">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Glosario Digital de Términos Jurídicos y Psicológicos</title>
+<link href="css/glosario1.0.css" rel="stylesheet" type="text/css"/>
+</style>
+<script language="JavaScript" type="text/javascript" src="includes/xpath.js"></script>
+<script language="JavaScript" type="text/javascript" src="includes/SpryData.js"></script>
+<script language="JavaScript" type="text/javascript" src="includes/SpryPagedView.js"></script>
+<script language="JavaScript" type="text/javascript" src="includes/SimpleAutoSuggest.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+var dsGlosarios = new Spry.Data.XMLDataSet("datos/glosarios.xml", "/glosarios/glosario");
+var dsTerminos = new Spry.Data.XMLDataSet("datos/{dsGlosarios::url}", "/glosario/terminos/termino");
+
+dsTerminos.setColumnType("definicion","html");
+dsTerminos.setColumnType("tipo","html");
+
+
+var pvTerminos = new Spry.Data.PagedView(dsTerminos, { pageSize: 10 });
+var pvTerminosPagedInfo = pvTerminos.getPagingInfo();
+
+var tipo = "a";
+
+function MyQueryFunc(autoCompleteWidget, str, dataSet, columnName)
+{
+	
+	if (!str)
+	{
+		dataSet.filter(function(ds, row, rowNumber) { return null; });
+		autoCompleteWidget.showSuggestions(false);
+		return;
+	}
+
+	var regExpStr = Spry.Widget.SimpleAutoSuggest.escapeRegExp(str);
+	
+	//regExpStr = "^" + regExpStr;
+
+	var regExp = new RegExp(regExpStr, "i");
+	
+	var filterFunc = function(ds, row, rowNumber)
+	{
+		var str = row[columnName];
+		if (str && str.search(regExp) != -1)
+			return row; /* MATCH! */
+		return null; /* NO MATCH! */
+	};
+
+	dataSet.filter(filterFunc);
+
+	autoCompleteWidget.showSuggestions(dataSet.getData().length > 0);
+}
+-->
+</script>
+</head>
+<body>
+<div id="wraped">
+  <div id="logo"> <img src="imagenes/bannerGlosario.jpg" width="800" height="130" /></div>
+  <div id="contenedor">
+    <div id="menu">
+    <div id="menuG">
+      
+      <p><a href="indiceGeneral.html">Indice Glosario</a></p>
+      <p><a href="indicejuridico.html">Indice Jurídico</a></p>
+      <p><a href="indicepsicologico.html">Indice Psicológico</a></p>
+      <p><a href="buscarTerminos.html">Buscar Términos</a></p>
+      <p><a href="indiceReferencias.html">Indice Referencias</a></p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+    </div>
+    <div id="main">
+    <div id="infoLabel"><img src="imagenes/labelBusquedaTerminos.png" width="353" height="41" /></div>
+    <!-- BEGIN Data loading and filtering controls. -->
+    <div id="alfabeto">
+         
+    </div>
+    <!-- END Data loading and filtering controls. -->
+<!-- BEGIN PagedView Info Section -->
+<div id="busquedaTerminos">
+  <div>Introduzca un término: 
+    <input type="text" id="terminosTF"/>
+  <p>Escoge un glosario: <span class="esp">.....</span><span spry:region="dsGlosarios" id="stateSelector">
+      <select spry:repeatchildren="dsGlosarios" name="stateSelect" onchange="dsGlosarios.setCurrentRowNumber(this.selectedIndex);">
+        <option spry:if="{ds_RowNumber} == {ds_CurrentRowNumber}" value="{nombre}" selected="selected">{nombre}</option>
+        <option spry:if="{ds_RowNumber} != {ds_CurrentRowNumber}" value="{nombre}">{nombre}</option>
+        </select>
+    </span></p></div>
+</div>
+<p>&nbsp;</p>
+<div id="infoPaginas" spry:region="pvTerminos">
+<span spry:if="document.getElementById(&quot;terminosTF&quot;).value"> 
+<span spry:if="document.getElementById(&quot;terminosTF&quot;).value.length  &gt; 0">
+	<p spry:if="{ds_UnfilteredRowCount} &gt; 0">Página {ds_PageNumber} de {ds_PageCount} - Resultados {ds_PageFirstItemNumber} al {ds_PageLastItemNumber} de {ds_UnfilteredRowCount}.</p>
+	<p spry:if="{ds_UnfilteredRowCount} == 0">No existen términos que empiezen con esa letra!</p>
+    </span>
+    </span>
+</div>
+<!-- END PagedView Info Section -->
+<div id="numPaginas" spry:region="pvTerminosPagedInfo">
+<span spry:if="document.getElementById(&quot;terminosTF&quot;).value">
+<p spry:if="{ds_UnfilteredRowCount} &gt; 0">Páginas:
+<span   spry:repeatchildren="pvTerminosPagedInfo">
+	<a spry:if="{ds_CurrentRowNumber} != {ds_RowNumber}" href="#" onclick="pvTerminos.goToPage('{ds_PageNumber}'); return false;">{ds_PageNumber}</a>
+	<span spry:if="{ds_CurrentRowNumber} == {ds_RowNumber}" class="currentPage">{ds_PageNumber}</span>
+</span></p>
+</span>
+<p spry:if="{ds_UnfilteredRowCount} &gt; 0"> <img src="imagenes/terminoJuridico.png" width="20" height="18" /> = Término Jurídico  <img src="imagenes/terminoPsicologico.png" width="20" height="18" /> = Término Psicológico</p>
+</div>
+<!-- BEGIN Paged Display Section -->
+<div id="resultados" spry:region="pvTerminos dsTerminos">
+	<span spry:if="document.getElementById(&quot;terminosTF&quot;).value">
+	<ul spry:repeatchildren="pvTerminos" spry:choose="choose">
+		<li spry:when="{ds_RowID} == {dsTerminos::ds_CurrentRowID}" spry:setrow="pvTerminos">
+        	<h1 class="concepto">{pvTerminos::tipo}  {pvTerminos::concepto}</h1>
+			<h2 class="definicion">{pvTerminos::definicion}</h2>
+            <p>&nbsp;</p>
+        </li>
+		<li spry:default="default"  spry:setrow="pvTerminos">				
+        	<h1 class="concepto">{pvTerminos::tipo}  {pvTerminos::concepto}</h1>
+			<h2 class="definicion">{pvTerminos::definicion}</h2>
+            <p>&nbsp;</p>
+        </li>
+	</ul>
+    </span>
+</div>
+<!-- END Paged Display Section -->
+<div id="numPaginas" spry:region="pvTerminosPagedInfo">
+<span spry:if="document.getElementById(&quot;terminosTF&quot;).value">
+<p spry:if="{ds_UnfilteredRowCount} &gt; 0">Páginas:
+<span   spry:repeatchildren="pvTerminosPagedInfo">
+	<a spry:if="{ds_CurrentRowNumber} != {ds_RowNumber}" href="#" onclick="pvTerminos.goToPage('{ds_PageNumber}'); return false;">{ds_PageNumber}</a>
+	<span spry:if="{ds_CurrentRowNumber} == {ds_RowNumber}" class="currentPage">{ds_PageNumber}</span>
+</span></p>
+</span>
+</div>
+<script language="JavaScript" type="text/javascript">
+
+var ac2 = new Spry.Widget.SimpleAutoSuggest("terminosTF", "resultados", function(acWidget, str) { MyQueryFunc(acWidget, str, dsTerminos, "concepto"); }, {containsString: true});
+</script>
+
+    </div>
+  </div>
+<div id="footer"><img src="imagenes/bannerGLosLow.png" width="800" height="20" /></div></div>
+</body>
+</html>

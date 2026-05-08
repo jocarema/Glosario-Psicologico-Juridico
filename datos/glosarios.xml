@@ -1,0 +1,15 @@
+﻿<glosarios>
+	<glosario>
+		<nombre>Cualquier glosario</nombre>
+		<url>glosarioJP.xml</url>
+	</glosario>
+	<glosario>
+		<nombre>Jurídico</nombre>
+		<url>juridico.xml</url>
+	</glosario>
+	<glosario>
+		<nombre>Psicológico</nombre>
+		<url>psicologico.xml</url>
+	</glosario>
+	
+</glosarios>
